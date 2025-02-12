@@ -2,8 +2,7 @@ package io.github.anjosdev.acesso_api.adapter.Controller;
 
 import io.github.anjosdev.acesso_api.adapter.converters.UsuarioConverter;
 import io.github.anjosdev.acesso_api.adapter.dto.UsuarioDto;
-import io.github.anjosdev.acesso_api.core.domain.Usuario;
-import io.github.anjosdev.acesso_api.core.domain.ports.UsuarioServicePort;
+import io.github.anjosdev.acesso_api.core.ports.UsuarioServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

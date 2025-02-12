@@ -12,6 +12,6 @@ public class UsuarioConverter {
     }
 
     public UsuarioDto toDto (Usuario usuario){
-        return  new UsuarioDto(usuario.getId(), usuario.getEmail(), usuario.getSenha(), usuario.getAdm(), null);
+        return new UsuarioDto(usuario.getId(), usuario.getEmail(), usuario.getSenha(), usuario.getAdm(), null);
     }
 }

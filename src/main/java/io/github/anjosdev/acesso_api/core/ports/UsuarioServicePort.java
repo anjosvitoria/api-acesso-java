@@ -1,4 +1,4 @@
-package io.github.anjosdev.acesso_api.core.domain.ports;
+package io.github.anjosdev.acesso_api.core.ports;
 
 import io.github.anjosdev.acesso_api.core.domain.Usuario;
 
