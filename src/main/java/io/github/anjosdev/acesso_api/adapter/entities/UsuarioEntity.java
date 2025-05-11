@@ -1,8 +1,6 @@
 package io.github.anjosdev.acesso_api.adapter.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name = "tb_usuario")
 public class UsuarioEntity {
     @Id
     @GeneratedValue
@@ -20,4 +19,7 @@ public class UsuarioEntity {
     private String email;
     private String senha;
     private Boolean adm;
+    @OneToOne
+    @JoinColumn(name = "pessoa_id")
+    private PessoaEntity pessoaEntity;
 }

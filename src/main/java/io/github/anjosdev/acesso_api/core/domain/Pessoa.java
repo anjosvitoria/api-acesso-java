@@ -1,16 +1,17 @@
 package io.github.anjosdev.acesso_api.core.domain;
 
 public class Pessoa {
-    private long id;
+    private Long id;
     private String nome;
 
     public Pessoa() {
     }
 
-    public Pessoa(long id, String nome) {
+    public Pessoa(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
+
 
     public long getId() {
         return id;

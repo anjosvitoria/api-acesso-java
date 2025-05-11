@@ -5,17 +5,18 @@ public class Usuario {
     private String email;
     private String senha;
     private Boolean adm;
-    private long idPessoa;
+    private Pessoa pessoa;
 
 
     public Usuario() {
     }
 
-    public Usuario(long id, String email, String senha, Boolean adm) {
+    public Usuario(long id, String email, String senha, Boolean adm, Pessoa pessoa) {
         this.id = id;
         this.email = email;
         this.senha = senha;
         this.adm = adm;
+        this.pessoa = pessoa;
     }
 
     public long getId() {
@@ -48,5 +49,13 @@ public class Usuario {
 
     public void setAdm(Boolean adm) {
         this.adm = adm;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }
