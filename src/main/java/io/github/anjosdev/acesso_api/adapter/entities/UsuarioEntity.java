@@ -19,6 +19,7 @@ public class UsuarioEntity {
     private String email;
     private String senha;
     private Boolean adm;
+
     @OneToOne
     @JoinColumn(name = "pessoa_id")
     private PessoaEntity pessoaEntity;
