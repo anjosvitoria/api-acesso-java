@@ -2,6 +2,7 @@ package io.github.anjosdev.acesso_api.adapter.repositories;
 
 import io.github.anjosdev.acesso_api.adapter.entities.PessoaEntity;
 import io.github.anjosdev.acesso_api.adapter.entities.UsuarioEntity;
+import io.github.anjosdev.acesso_api.core.domain.Pessoa;
 import io.github.anjosdev.acesso_api.core.domain.Usuario;
 import io.github.anjosdev.acesso_api.core.ports.UsuarioRepositoryPort;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,15 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
 
     @Override
     public Usuario create(Usuario usuario) {
-        PessoaEntity pessoaEntityMap = modelMapper.map(usuario.getPessoa(), PessoaEntity.class);
-        PessoaEntity pessoaEntity = pessoaRepository.save(pessoaEntityMap);
-        UsuarioEntity novoUsuario = usuarioRepository.
-                save(modelMapper.map(usuario, UsuarioEntity.class));
+        UsuarioEntity usuarioEntity = modelMapper.map(usuario, UsuarioEntity.class);
+        usuarioEntity.setPessoaEntity(createpessoa(usuario.getPessoa()));
+        UsuarioEntity novoUsuario = usuarioRepository.save(usuarioEntity);
+
         return modelMapper.map(novoUsuario, Usuario.class);
+    }
+
+    private PessoaEntity createpessoa(Pessoa pessoa){
+        PessoaEntity pessoaEntity = modelMapper.map(pessoa, PessoaEntity.class);
+        return  pessoaRepository.save(pessoaEntity);
     }
 }

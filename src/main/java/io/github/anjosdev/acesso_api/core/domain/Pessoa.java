@@ -13,7 +13,7 @@ public class Pessoa {
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
