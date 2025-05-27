@@ -14,8 +14,11 @@ public class UsuarioService implements UsuarioServicePort {
 
 
     @Override
-    public Usuario createUsuario(Usuario usuario) {
-
+    public Usuario createUsuario(Usuario usuario) throws IllegalAccessException {
+        Usuario usuarioExiste = usuarioRepositoryPort.obtainByEmail(usuario.getEmail());
+        if (usuarioExiste != null) {
+            throw new IllegalAccessException("Usuario já existe");
+        }
         return usuarioRepositoryPort.create(usuario);
     }
 }
