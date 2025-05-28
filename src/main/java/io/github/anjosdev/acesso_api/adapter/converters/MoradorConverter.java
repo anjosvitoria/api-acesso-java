@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class MoradorConverter {
 
-    public Morador(MoradorDto moradorDto){
+    public Morador toDomain(MoradorDto moradorDto){
         return new Morador(moradorDto.getId(),
-                moradorDto.getEmail(),
-                moradorDto.getSenha(),
-                moradorDto.getAdm(),
+                moradorDto.getCpf(),
+                moradorDto.getEndereco(),
+                moradorDto.getCelular(),
                 new Pessoa(null, moradorDto.getNome())
                 );
     }
@@ -22,9 +22,9 @@ public class MoradorConverter {
     public MoradorDto toDto (Morador morador){
         return new MoradorDto(
                 morador.getId(),
-                morador.getEmail(),
-                morador.getSenha(),
-                morador.getAdm(),
+                morador.getCpf(),
+                morador.getEndereco(),
+                morador.getCelular(),
                 morador.getPessoa().getNome());
     }
 }
