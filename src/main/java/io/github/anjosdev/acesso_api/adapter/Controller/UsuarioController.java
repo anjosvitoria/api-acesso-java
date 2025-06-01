@@ -18,7 +18,7 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UsuarioDto create(@RequestBody UsuarioDto usuarioDto){
+    public UsuarioDto create(@RequestBody UsuarioDto usuarioDto) throws IllegalAccessException {
 
         return usuarioConverter.toDto(usuarioServicePort.createUsuario(usuarioConverter.toDomain(usuarioDto)));
     }

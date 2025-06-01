@@ -20,7 +20,6 @@ public class MoradorEntity {
     private String cpf;
     private String endereco;
     private String celular;
-    private Pessoa pessoa;
 
     @OneToOne
     @JoinColumn(name = "pessoa_id")

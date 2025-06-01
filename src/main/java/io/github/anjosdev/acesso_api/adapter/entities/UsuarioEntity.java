@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class UsuarioEntity {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     private String email;
     private String senha;

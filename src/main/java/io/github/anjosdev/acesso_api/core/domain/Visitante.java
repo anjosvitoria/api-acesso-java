@@ -1,24 +1,24 @@
 package io.github.anjosdev.acesso_api.core.domain;
 
 public class Visitante {
-    private long id;
+    private Long id;
     private String rg;
-    private long idPessoa;
+    private Long idPessoa;
 
     public Visitante() {
     }
 
-    public Visitante(long id, String rg, long idPessoa) {
+    public Visitante(Long id, String rg, Long idPessoa) {
         this.id = id;
         this.rg = rg;
         this.idPessoa = idPessoa;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -30,11 +30,11 @@ public class Visitante {
         this.rg = rg;
     }
 
-    public long getIdPessoa() {
+    public Long getIdPessoa() {
         return idPessoa;
     }
 
-    public void setIdPessoa(long idPessoa) {
+    public void setIdPessoa(Long idPessoa) {
         this.idPessoa = idPessoa;
     }
 }

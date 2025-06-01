@@ -1,7 +1,7 @@
 package io.github.anjosdev.acesso_api.core.domain;
 
 public class Usuario {
-    private long id;
+    private Long id;
     private String email;
     private String senha;
     private Boolean adm;
@@ -11,7 +11,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(long id, String email, String senha, Boolean adm, Pessoa pessoa) {
+    public Usuario(Long id, String email, String senha, Boolean adm, Pessoa pessoa) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -19,11 +19,11 @@ public class Usuario {
         this.pessoa = pessoa;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

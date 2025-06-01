@@ -3,26 +3,26 @@ package io.github.anjosdev.acesso_api.core.domain;
 import java.time.LocalDateTime;
 
 public class Visita {
-    private long id;
+    private Long id;
     private LocalDateTime dataHora;
-    private long idMorador;
-    private long idVisitante;
+    private Long idMorador;
+    private Long idVisitante;
 
     public Visita() {
     }
 
-    public Visita(long id, LocalDateTime dataHora, long idMorador, long idVisitante) {
+    public Visita(Long id, LocalDateTime dataHora, Long idMorador, Long idVisitante) {
         this.id = id;
         this.dataHora = dataHora;
         this.idMorador = idMorador;
         this.idVisitante = idVisitante;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,19 +34,19 @@ public class Visita {
         this.dataHora = dataHora;
     }
 
-    public long getIdMorador() {
+    public Long getIdMorador() {
         return idMorador;
     }
 
-    public void setIdMorador(long idMorador) {
+    public void setIdMorador(Long idMorador) {
         this.idMorador = idMorador;
     }
 
-    public long getIdVisitante() {
+    public Long getIdVisitante() {
         return idVisitante;
     }
 
-    public void setIdVisitante(long idVisitante) {
+    public void setIdVisitante(Long idVisitante) {
         this.idVisitante = idVisitante;
     }
 }
