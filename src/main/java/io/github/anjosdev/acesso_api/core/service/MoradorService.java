@@ -14,6 +14,10 @@ public class MoradorService implements MoradorServicePort {
 
     @Override
     public Morador createMorador(Morador morador) throws IllegalAccessException {
+        Morador moradorExistente = moradorRepositoryPort.obtainByCpf((morador.getCpf()));
+        if(moradorExistente != null){
+            throw new IllegalAccessException("morador ja existe");
+        }
         return moradorRepositoryPort.create(morador);
     }
 }
