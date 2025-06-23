@@ -16,8 +16,8 @@ public class VisitanteConverter {
         );
     }
 
-    public static VisitanteDto toDto(Visitante visitante){
-        return  new VisitanteDto(visitante.getId(),
+    public VisitanteDto toDto(Visitante visitante){
+        return new VisitanteDto(visitante.getId(),
                 visitante.getPessoa().getNome(),
                 visitante.getRg()
         );

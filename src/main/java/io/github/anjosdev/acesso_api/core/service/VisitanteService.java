@@ -4,6 +4,8 @@ import io.github.anjosdev.acesso_api.core.domain.Visitante;
 import io.github.anjosdev.acesso_api.core.ports.VisitanteRepositoryPort;
 import io.github.anjosdev.acesso_api.core.ports.VisitanteServicePort;
 
+import java.util.Collection;
+
 public class VisitanteService implements VisitanteServicePort {
 
     private final VisitanteRepositoryPort visitanteRepositoryPort;
@@ -13,13 +15,23 @@ public class VisitanteService implements VisitanteServicePort {
     }
 
     @Override
-    public Visitante createVisitante(Visitante visitante) throws IllegalAccessException {
-
-        Visitante visitanteExistente = visitanteRepositoryPort.obtainByRg(visitante.getRg());
-
-        if (visitanteExistente != null) {
-            throw new IllegalAccessException("visitante já existe");
-        }
+    public Visitante createVisitante(Visitante visitante) {
+        visitanteRepositoryPort.obtainByRg(visitante.getRg())
+                .ifPresent(v -> {
+                    throw new IllegalArgumentException("visitante já existe");
+                });
         return visitanteRepositoryPort.create(visitante);
+    }
+
+    @Override
+    public Visitante obtainByRg(String rg) {
+       return visitanteRepositoryPort.obtainByRg(rg)
+                .orElseThrow(() -> new IllegalArgumentException("visitante não encontrado"));
+    }
+
+
+    @Override
+    public Collection<Visitante> listAll() {
+        return visitanteRepositoryPort.listAll();
     }
 }

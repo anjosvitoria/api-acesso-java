@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 public class VisitanteRepositoryAdapter implements VisitanteRepositoryPort {
@@ -22,12 +25,14 @@ public class VisitanteRepositoryAdapter implements VisitanteRepositoryPort {
     }
 
     @Override
-    public Visitante obtainByRg(String rg) {
-        VisitanteEntity visitanteByrg = visitanteRepository.findByrg(rg);
+    public Optional<Visitante> obtainByRg(String rg) {
+       return visitanteRepository.findByrg(rg)
+               .map(visitanteEntity -> modelMapper.map(visitanteEntity, Visitante.class));
+    }
 
-        if(visitanteByrg == null) {
-            return null;
-        }
-        return modelMapper.map(visitanteByrg, Visitante.class);
+    @Override
+    public Collection<Visitante> listAll() {
+        return visitanteRepository.findAll().stream()
+                .map(visitanteEntity -> modelMapper.map(visitanteEntity, Visitante.class)).toList();
     }
 }
