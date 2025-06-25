@@ -1,5 +1,6 @@
 package io.github.anjosdev.acesso_api.core.service;
 
+import io.github.anjosdev.acesso_api.core.Exceptions.BusinessException;
 import io.github.anjosdev.acesso_api.core.domain.Visitante;
 import io.github.anjosdev.acesso_api.core.ports.VisitanteRepositoryPort;
 import io.github.anjosdev.acesso_api.core.ports.VisitanteServicePort;
@@ -18,7 +19,7 @@ public class VisitanteService implements VisitanteServicePort {
     public Visitante createVisitante(Visitante visitante) {
         visitanteRepositoryPort.obtainByRg(visitante.getRg())
                 .ifPresent(v -> {
-                    throw new IllegalArgumentException("visitante já existe");
+                    throw new BusinessException("visitante já existe");
                 });
         return visitanteRepositoryPort.create(visitante);
     }
