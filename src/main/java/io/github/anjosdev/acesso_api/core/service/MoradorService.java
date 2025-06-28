@@ -4,6 +4,8 @@ import io.github.anjosdev.acesso_api.core.domain.Morador;
 import io.github.anjosdev.acesso_api.core.ports.MoradorRepositoryPort;
 import io.github.anjosdev.acesso_api.core.ports.MoradorServicePort;
 
+import java.util.Collection;
+
 public class MoradorService implements MoradorServicePort {
 
     private final MoradorRepositoryPort moradorRepositoryPort;
@@ -19,5 +21,10 @@ public class MoradorService implements MoradorServicePort {
             throw new IllegalAccessException("morador ja existe");
         }
         return moradorRepositoryPort.create(morador);
+    }
+
+    @Override
+    public Collection<Morador> findAll() {
+        return moradorRepositoryPort.findAll();
     }
 }

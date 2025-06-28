@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+
 @Component
 @RequiredArgsConstructor
 public class MoradorRepositoryAdapter implements MoradorRepositoryPort {
@@ -31,5 +33,13 @@ public class MoradorRepositoryAdapter implements MoradorRepositoryPort {
             return null;
         }
         return modelMapper.map(moradorByCpf, Morador.class);
+    }
+
+    @Override
+    public Collection<Morador> findAll() {
+        return moradorRepository.findAll()
+                .stream()
+                .map(moradorEntity -> modelMapper.map(moradorEntity, Morador.class))
+                .toList();
     }
 }

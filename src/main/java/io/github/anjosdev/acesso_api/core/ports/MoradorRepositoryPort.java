@@ -1,9 +1,11 @@
 package io.github.anjosdev.acesso_api.core.ports;
 
 import io.github.anjosdev.acesso_api.core.domain.Morador;
-import io.github.anjosdev.acesso_api.core.domain.Usuario;
+
+import java.util.Collection;
 
 public interface MoradorRepositoryPort {
-    public Morador create(Morador morador);
-    public Morador obtainByCpf(String cpf);
+     Morador create(Morador morador);
+     Morador obtainByCpf(String cpf);
+     Collection<Morador> findAll();
 }

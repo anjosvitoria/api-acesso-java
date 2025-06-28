@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("api/moradores")
 @RequiredArgsConstructor
@@ -20,6 +22,14 @@ public class MoradorController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public MoradorDto create(@RequestBody MoradorDto moradorDto) throws IllegalAccessException {
         Morador novoMorador = moradorServicePort.createMorador(moradorConverter.toDomain(moradorDto));
-        return  moradorConverter.toDto(novoMorador);
+        return moradorConverter.toDto(novoMorador);
+    }
+
+    @GetMapping
+    public Collection<MoradorDto> findAll(){
+        return  moradorServicePort.findAll()
+                .stream()
+                .map(moradorConverter::toDto)
+                .toList();
     }
 }
